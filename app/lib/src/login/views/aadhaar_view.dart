@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:app/src/navigation/views/navigation_view.dart';
+import 'package:app/src/login/views/otp_view.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
-class OTPView extends StatefulWidget {
-  const OTPView({super.key});
+class AadhaarView extends StatefulWidget {
+  const AadhaarView({super.key});
 
   @override
-  State<OTPView> createState() => _OTPViewState();
+  State<AadhaarView> createState() => _AadhaarViewState();
 }
 
-class _OTPViewState extends State<OTPView> {
+class _AadhaarViewState extends State<AadhaarView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -48,8 +49,12 @@ class _OTPViewState extends State<OTPView> {
                               ),
                               contentPadding:
                                   EdgeInsets.fromLTRB(24, 18, 24, 18),
-                              labelText: 'One Time Password',
+                              labelText: 'Aadhaar Number',
                             ),
+                            inputFormatters: [
+                              CreditCardNumberInputFormatter(
+                                  useSeparators: true)
+                            ],
                             keyboardType: TextInputType.number,
                           ),
                         ),
@@ -62,7 +67,7 @@ class _OTPViewState extends State<OTPView> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const NavigationView(),
+                              builder: (context) => const OTPView(),
                             ),
                           );
                         },

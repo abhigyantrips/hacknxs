@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 import 'package:app/src/documents/views/documents_view.dart';
 import 'package:app/src/hospitals/views/hospital_view.dart';
 import 'package:app/src/permissions/views/permissions_view.dart';
-import 'package:flutter/material.dart';
 
 class NavigationView extends StatefulWidget {
   const NavigationView({super.key});
@@ -36,11 +37,21 @@ class _NavigationViewState extends State<NavigationView> {
               padding: const EdgeInsets.all(6.0),
               child: AppBar(
                 backgroundColor: colorScheme.background.withOpacity(0.6),
-                title: Text(
-                  'HealthSync',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                title: Image.asset(
+                  'assets/splash-branding.png',
+                  height: 68,
                 ),
                 centerTitle: true,
+                leading: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.account_circle),
+                ),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.search),
+                  )
+                ],
                 elevation: 0.0,
                 scrolledUnderElevation: 0.0,
               ),
