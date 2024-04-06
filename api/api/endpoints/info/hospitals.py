@@ -1,26 +1,21 @@
-from api.models.query import Query
-from api.utils import generate_jwt
 from sanic import Request, json
 from sanic.views import HTTPMethodView
-from sanic_ext import validate
 
 
 class HospitalInfo(HTTPMethodView):
     """Insurance Info endpoint."""
 
-    @validate(query=Query)
-    async def get(self, request: Request, query: Query):
+    async def get(self, request: Request,):
         """Get insurance info for a hospital."""
-        if query.query:
-            hospital_id = query.query
+        hospital_id = request.args.get("query", None)
+        if hospital_id is not None:
 
-            collection = request.app.ctx.db["hospital"]
-            doc = await collection.find_one({"hospital_id": hospital_id})
+            collection = request.app.ctx.db["hospitals"]
+            doc = await collection.find_one({"hospital_id": str(hospital_id)})
 
             if doc is None:
                 return json(
                     {
-                        "authenticated": False,
                         "message": "Hospital not found",
                         "error": "Not Found",
                     },
@@ -42,7 +37,7 @@ class HospitalInfo(HTTPMethodView):
             return json(doc)
         else:
             # Return all hospitals
-            collection = request.app.ctx.db["hospital"]
+            collection = request.app.ctx.db["hospitals"]
             docs = []
             async for doc in collection.find():
                 if doc["ratings"]:
@@ -54,5 +49,6 @@ class HospitalInfo(HTTPMethodView):
                 doc.pop("_id")
                 doc.pop("ratings")
                 doc["rating"] = average
+                docs.append(doc)
             
             return json(docs)

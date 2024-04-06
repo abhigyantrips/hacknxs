@@ -1,5 +1,3 @@
-from api.models.query import Query
-from api.utils import generate_jwt
 from sanic import Request, json
 from sanic.views import HTTPMethodView
 from sanic_ext import validate
@@ -7,18 +5,17 @@ from sanic_ext import validate
 class InsuranceInfo(HTTPMethodView):
     """Insurance Info endpoint."""
 
-    @validate(query=Query)
-    async def get(self, request: Request, query: Query):
-        if query.query:
-            insurance = query.query
+    async def get(self, request: Request):
+        insurance = request.args.get("query", None)
+        if insurance is not None:
+            
 
             collection = request.app.ctx.db["insurance"]
-            doc = await collection.find_one({"provider_name": insurance})
+            doc = await collection.find_one({"provider": insurance})
 
             if doc is None:
                 return json(
                     {
-                        "authenticated": False,
                         "message": "Insurance not found",
                         "error": "Not Found",
                     },
