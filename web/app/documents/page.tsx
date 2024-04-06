@@ -169,9 +169,9 @@ export default function DocumentsPage(){
             )   
             .map((doc) => (
                 <div className="mt-c5" key={doc.id}>
-                <Card className='bg-gray-50'>
+                <Card className='group bg-gray-50 hover:border-[#00a9b0] hover:duration-1000'>
                 <CardHeader>
-                    <CardTitle>{doc.name}</CardTitle>
+                    <CardTitle className='group-hover:text-[#00a9b0] group-hover:duration-1000'>{doc.name}</CardTitle>
                 </CardHeader>
                 <CardContent className='px-5'>
                     <div className="pb-2 pt-2">

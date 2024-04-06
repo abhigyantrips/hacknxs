@@ -47,7 +47,7 @@ export default function ConsultationPage(){
     ]
 
     return (
-        <>
+        <div className='mx-10'>
 
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 space-y-0.5 border-b pb-6 pt-6">
                 <div>
@@ -63,12 +63,12 @@ export default function ConsultationPage(){
             <div className="flex flex-col lg:grid lg:grid-rows-2 lg:grid-cols-2 gap-4 pt-6">
                 {
                     consultations.map((consultation:any) => (
-                        <Card key={consultation.id} className='p-5'>
+                        <Card key={consultation.id} className='group p-5 hover:border-orange-500 hover:duration-1000'>
                             <div className='flex justify-between'>
                             <CardHeader className='flex flex-col justify-between'>
                                 <CardTitle className='flex justify-between'>
                                     <div className='text-left'>
-                                        {consultation.speciality}
+                                        <div className='group-hover:text-orange-500 group-hover:duration-1000'>{consultation.speciality}</div>
                                         <p className="text-muted-foreground text-sm">
                                         {consultation.date}
                                         </p>
@@ -95,6 +95,6 @@ export default function ConsultationPage(){
                 }
             </div>
 
-        </>   
+        </div>   
     )
 }
