@@ -6,10 +6,13 @@ authors = ["Abhigyan Tripathi <abhigyantrips@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 sanic = { extras = ["ext"], version = "^23.6.0" }
 taskipy = "^1.12.0"
 pydantic = "^2.4.2"
+motor = "^3.4.0"
+pyjwt = "^2.8.0"
+aioboto3 = "^12.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
