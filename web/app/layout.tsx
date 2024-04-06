@@ -50,7 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="light">
             <SiteHeader />
-            <div className="mx-10 flex-1">{children}</div>
+            <div className="mx-5 flex-1">{children}</div>
             <Toaster />
             <SiteFooter />
           </ThemeProvider>
