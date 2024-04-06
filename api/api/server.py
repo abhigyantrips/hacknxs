@@ -27,6 +27,7 @@ config.update({"IS_PROD": is_prod.lower() == "true"})
 
 app.config.update(config)
 
+import api.endpoints  # noqa: E402
 
 @app.listener("before_server_start")
 async def register_db(app: Sanic):
