@@ -41,6 +41,7 @@ dependencies:
   json_annotation: ^4.8.1
   flutter_native_splash: ^2.4.0
   flutter_launcher_icons: ^0.13.1
+  flutter_multi_formatter: ^2.12.4
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,9 @@ flutter:
   assets:
     - assets/logo.png
     - assets/launcher-icon.png
+    - assets/splash-logo.png
+    - assets/splash-branding.png
+    - assets/aadhaar-logo.png
     - lib/src/documents/data/
     - lib/src/hospitals/data/
     - lib/src/permissions/data/

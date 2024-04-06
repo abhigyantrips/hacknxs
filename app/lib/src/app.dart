@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:app/src/login/views/login_view.dart';
+import 'package:app/src/login/views/aadhaar_view.dart';
+import 'package:app/themes.dart';
 
 class HealthSync extends StatelessWidget {
   const HealthSync({super.key});
@@ -10,11 +11,8 @@ class HealthSync extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HealthSync',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const LoginView(),
+      theme: lightTheme,
+      home: const AadhaarView(),
     );
   }
 }
