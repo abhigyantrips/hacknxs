@@ -1,3 +1,4 @@
+import os
 import aiohttp
 import motor.motor_asyncio as async_motor
 from dotenv import dotenv_values
@@ -31,6 +32,10 @@ import api.endpoints  # noqa: E402
 
 @appserver.listener("before_server_start")
 async def register_db(app: Sanic):
+    # Ensure temp directory exists
+    path = os.path.join(os.getcwd(), "temp")
+    if not os.path.exists(path):
+        os.makedirs(path)
     logger.info("Connecting to MongoDB.")
     connection = app.config.get("MONGO_CONNECTION_URI")
 

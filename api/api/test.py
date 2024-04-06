@@ -1,20 +1,13 @@
-import asyncio
+import requests 
+import json
 
-from aiob2 import Client
+url = 'http://localhost:8000/file'
 
-with open(r'C:/Users/Hari Keshav Rajesh/Desktop/Computer Projects and resources/hacknxs/api/api/test.py', 'rb') as file:
-    data = file.read()
+data = {
+    "file_name": "page.tsx"
+}
 
-async def main():
-    async with Client(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) as client:
-        file = await client.upload_file(
-            content_bytes=data,
-            file_name='test.jpg',
-            bucket_id='ea6c509682d8b02a8eee0012',
-        )
-        print(file)
+response = requests.get(url, data=json.dumps(data))
 
-if __name__ == '__main__':
-    asyncio.run(main())
-
-
+with open(data["file_name"], 'wb') as f:
+    f.write(response.content)
