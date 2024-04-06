@@ -1,72 +1,72 @@
 [
     {
-        "name": "Dr. Alice Smith",
+        "name": "Dr. Priya Patel",
         "location": "Trauma Center",
         "date": "2024-04-06 08:00:00",
         "participants": 25
     },
     {
-        "name": "Dr. John Doe",
+        "name": "Dr. Rajesh Kumar",
         "location": "Intensive Care Unit",
         "date": "2024-04-06 10:30:00",
         "participants": 12
     },
     {
-        "name": "Dr. Emily Johnson",
+        "name": "Dr. Deepika Sharma",
         "location": "Operating Theater",
         "date": "2024-04-06 13:45:00",
         "participants": 7
     },
     {
-        "name": "Dr. Michael Brown",
+        "name": "Dr. Arjun Gupta",
         "location": "Children's Ward",
         "date": "2024-04-06 11:00:00",
         "participants": 15
     },
     {
-        "name": "Dr. Sarah Wilson",
+        "name": "Dr. Nisha Singh",
         "location": "Labor and Delivery",
         "date": "2024-04-06 09:30:00",
         "participants": 5
     },
     {
-        "name": "Dr. David Thompson",
+        "name": "Dr. Manish Verma",
         "location": "Diagnostic Imaging",
         "date": "2024-04-06 14:20:00",
         "participants": 10
     },
     {
-        "name": "Dr. Jennifer Martinez",
+        "name": "Dr. Anjali Das",
         "location": "Clinical Lab",
         "date": "2024-04-06 12:10:00",
         "participants": 18
     },
     {
-        "name": "Dr. Christopher Lee",
+        "name": "Dr. Sandeep Sharma",
         "location": "Trauma Center",
         "date": "2024-04-06 17:15:00",
         "participants": 30
     },
     {
-        "name": "Dr. Jessica Garcia",
+        "name": "Dr. Pooja Malhotra",
         "location": "Intensive Care Unit",
         "date": "2024-04-06 16:00:00",
         "participants": 14
     },
     {
-        "name": "Dr. Daniel Rodriguez",
+        "name": "Dr. Rahul Kapoor",
         "location": "Operating Theater",
         "date": "2024-04-06 15:30:00",
         "participants": 9
     },
     {
-        "name": "Dr. Lisa Hernandez",
+        "name": "Dr. Sneha Sharma",
         "location": "Children's Ward",
         "date": "2024-04-06 10:45:00",
         "participants": 12
     },
     {
-        "name": "Dr. Matthew Wilson",
+        "name": "Dr. Vikram Singh",
         "location": "Labor and Delivery",
         "date": "2024-04-06 11:30:00",
         "participants": 6
