@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import SiteFooter from '@/components/site-footer';
 import SiteHeader from '@/components/site-header';
 import ThemeProvider from '@/components/theme-provider';
-import {Toaster} from '@/components/ui/sonner';
+import { Toaster } from '@/components/ui/sonner';
 
 import '@/styles/globals.css';
 
@@ -30,7 +30,7 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
-}
+};
 
 interface RootLayoutProps {
   children: React.ReactNode;
