@@ -42,7 +42,7 @@ class DoctorLogin(HTTPMethodView):
                 "hospital_id": doc["hospital_id"],
             }
 
-            jwt_ = await generate_jwt(app=request.app, data=jwt_data, validity=90, type="doctor")
+            jwt_ = await generate_jwt(app=request.app, data=jwt_data, validity=3600, type="doctor")
             json_payload = {"identifier": jwt_, "authenticated": True}
 
         else:
