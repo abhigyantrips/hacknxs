@@ -7,7 +7,7 @@ from sanic.log import logger
 
 class PermissionsView(HTTPMethodView):
     
-    @authorized
+    # @authorized
     async def get(self, request: Request) -> json:
         jwt_data = jwt.decode(request.token, key=request.app.config["PUB_KEY"], algorithms=["RS256"])
 

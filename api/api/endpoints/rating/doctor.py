@@ -24,7 +24,7 @@ class DoctorRating(HTTPMethodView):
         return json({"rating": round(average, 2)})
     
 
-    @authorized
+    # @authorized
     @validate(json=Rating)
     async def post(self, request: Request, doctor_id: str, body: Rating):
         """Rate a doctor."""

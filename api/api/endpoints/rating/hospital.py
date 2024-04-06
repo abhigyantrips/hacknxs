@@ -26,7 +26,7 @@ class HospitalRating(HTTPMethodView):
             average = total / len(doctor["ratings"])
         return json({"rating": round(average, 2)})
 
-    # @authorized
+    # # @authorized
     @validate(json=Rating)
     async def post(self, request: Request, hospital_id: str, body:Rating):
         """Rate a doctor."""

@@ -8,7 +8,7 @@ from sanic_ext import validate
 
 class PermissionsGrantView(HTTPMethodView):
 
-    @authorized
+    # @authorized
     @validate(json=PermissionUpdateData)
     async def post(self, request: Request, body: PermissionUpdateData) -> json:
         jwt_data = jwt.decode(
