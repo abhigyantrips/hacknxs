@@ -27,9 +27,9 @@ class _LoginViewState extends State<LoginView> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Image.asset(
-                    'images/HealthSync_transparent.png',
+                    'assets/logo.png',
                     fit: BoxFit.fill,
-                    height: 324,
+                    height: 128,
                   ),
                 ),
                 Padding(
