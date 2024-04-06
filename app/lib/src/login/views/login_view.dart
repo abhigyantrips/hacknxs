@@ -11,7 +11,6 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _isHidden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,48 +25,21 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Image.asset(
-                    'lib/assets/logo.png',
+                    'images/HealthSync_transparent.png',
                     fit: BoxFit.fill,
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  child: TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(), labelText: 'Username'),
-                    keyboardType: TextInputType.number,
-                    validator: _validator,
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  child: TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      border: const UnderlineInputBorder(),
-                      labelText: 'Password',
-                      suffixIcon: IconButton(
-                        onPressed: _togglePasswordView,
-                        icon: Icon(
-                          _isHidden ? Icons.visibility : Icons.visibility_off,
-                        ),
-                      ),
-                    ),
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: _isHidden,
-                    validator: _validator,
+                    height: 324,
                   ),
                 ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 4, vertical: 24),
-                  child: FilledButton(
-                    child: Text('Login'),
+                  child: FloatingActionButton.large(
+                    child: Icon(
+                      Icons.navigate_next,
+                      size: 48,
+                    ),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
@@ -83,18 +55,5 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
-  }
-
-  void _togglePasswordView() {
-    setState(() {
-      _isHidden = !_isHidden;
-    });
-  }
-
-  String? _validator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'This field is required.';
-    }
-    return null;
   }
 }

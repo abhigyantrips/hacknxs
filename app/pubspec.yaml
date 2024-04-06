@@ -71,6 +71,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/HealthSync_transparent.png
+    - lib/src/documents/data/
+    - lib/src/hospitals/data/
+    - lib/src/permissions/data/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

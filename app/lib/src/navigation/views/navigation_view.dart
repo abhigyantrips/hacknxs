@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:app/src/documents/views/documents_view.dart';
+import 'package:app/src/hospitals/views/hospital_view.dart';
+import 'package:app/src/permissions/views/permissions_view.dart';
 import 'package:flutter/material.dart';
 
 class NavigationView extends StatefulWidget {
@@ -11,15 +14,9 @@ class NavigationView extends StatefulWidget {
 
 class _NavigationViewState extends State<NavigationView> {
   final List<Widget> _views = <Widget>[
-    const Center(
-      child: Text('Documents View'),
-    ),
-    const Center(
-      child: Text('Permissions View'),
-    ),
-    const Center(
-      child: Text('Hospitals View'),
-    ),
+    EventsView(),
+    PermissionsView(),
+    HospitalView()
   ];
   PageController _pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
@@ -86,7 +83,6 @@ class _NavigationViewState extends State<NavigationView> {
           ),
         ],
         elevation: 0.0,
-        backgroundColor: colorScheme.background.withOpacity(0.6),
       ),
     );
   }
