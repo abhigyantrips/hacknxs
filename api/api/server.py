@@ -30,6 +30,7 @@ appserver.config.update(config)
 
 import api.endpoints  # noqa: E402
 
+
 @appserver.listener("before_server_start")
 async def register_db(app: Sanic):
     # Ensure temp directory exists
@@ -74,7 +75,9 @@ async def register_db(app: Sanic):
                 if resp.status != 200:
                     app.ctx.token = data["access_token"]
                 else:
-                    logger.error("Failed to authenticate with the Aadhaar Verification API")
+                    logger.error(
+                        "Failed to authenticate with the Aadhaar Verification API"
+                    )
                     app.stop(terminate=True)
 
 

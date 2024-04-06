@@ -4,8 +4,6 @@ from sanic.views import HTTPMethodView
 from api.utils import check_request_for_authorization_status
 
 
-
-
 def authorized(f):
     def decorator(*args, **kwargs):
         # @wraps(f)
@@ -17,7 +15,6 @@ def authorized(f):
                 is_authorized = await check_request_for_authorization_status(args[1])
             else:
                 is_authorized = await check_request_for_authorization_status(args[0])
-
 
             if is_authorized:
                 # the user is authorized.

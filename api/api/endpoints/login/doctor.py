@@ -6,13 +6,14 @@ from sanic.views import HTTPMethodView
 from sanic_ext import validate
 import bcrypt
 
+
 class DoctorLogin(HTTPMethodView):
     """Doctor Login endpoint."""
 
     @validate(json=DoctorLoginData)
-    async def post(self, request: Request, body:DoctorLoginData):
+    async def post(self, request: Request, body: DoctorLoginData):
         """Login a doctor."""
-        
+
         user = body.identifier
         password = body.secret
 
@@ -42,7 +43,9 @@ class DoctorLogin(HTTPMethodView):
                 "hospital_id": doc["hospital_id"],
             }
 
-            jwt_ = await generate_jwt(app=request.app, data=jwt_data, validity=3600, type="doctor")
+            jwt_ = await generate_jwt(
+                app=request.app, data=jwt_data, validity=3600, type="doctor"
+            )
             json_payload = {"identifier": jwt_, "authenticated": True}
 
         else:

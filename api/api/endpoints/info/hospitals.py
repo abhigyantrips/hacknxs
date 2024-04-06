@@ -5,11 +5,13 @@ from sanic.views import HTTPMethodView
 class HospitalInfo(HTTPMethodView):
     """Insurance Info endpoint."""
 
-    async def get(self, request: Request,):
+    async def get(
+        self,
+        request: Request,
+    ):
         """Get insurance info for a hospital."""
         hospital_id = request.args.get("query", None)
         if hospital_id is not None:
-
             collection = request.app.ctx.db["hospitals"]
             doc = await collection.find_one({"hospital_id": str(hospital_id)})
 
@@ -50,5 +52,5 @@ class HospitalInfo(HTTPMethodView):
                 doc.pop("ratings")
                 doc["rating"] = average
                 docs.append(doc)
-            
+
             return json(docs)

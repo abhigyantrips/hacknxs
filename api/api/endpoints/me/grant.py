@@ -7,7 +7,6 @@ from sanic_ext import validate
 
 
 class PermissionsGrantView(HTTPMethodView):
-
     # @authorized
     @validate(json=PermissionUpdateData)
     async def post(self, request: Request, body: PermissionUpdateData) -> json:
@@ -30,7 +29,8 @@ class PermissionsGrantView(HTTPMethodView):
 
             if body.value:
                 await request.app.ctx.db["patients"].update_one(
-                    {"aadhaar_number": user_id}, {"$addToSet": {"doctors_authorised": body.id}}
+                    {"aadhaar_number": user_id},
+                    {"$addToSet": {"doctors_authorised": body.id}},
                 )
                 return json({"message": "Doctor authorised"})
 

@@ -31,6 +31,7 @@ async def generate_jwt(
     data.update({"exp": expire, "iat": now, "nbf": now, "target": type})
     return jwt.encode(data, app.config["PRIV_KEY"], algorithm="RS256")
 
+
 async def generate_uuid() -> str:
     """Generates a UUID"""
     return str(uuid.uuid4())

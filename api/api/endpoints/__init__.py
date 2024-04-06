@@ -20,7 +20,9 @@ appserver.add_route(PatientLogin.as_view(), "/login/patient")
 appserver.add_route(DoctorLogin.as_view(), "/login/doctor")
 
 appserver.add_route(DoctorRating.as_view(), "/rating/doctor/<doctor_id:strorempty>")
-appserver.add_route(HospitalRating.as_view(), "/rating/hospital/<hospital_id:strorempty>")
+appserver.add_route(
+    HospitalRating.as_view(), "/rating/hospital/<hospital_id:strorempty>"
+)
 
 appserver.add_route(PermissionsGrantView.as_view(), "/me/grant")
 appserver.add_route(PermissionsView.as_view(), "/me/permissions")
