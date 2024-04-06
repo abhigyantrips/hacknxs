@@ -1,7 +1,9 @@
+import aiohttp
 import motor.motor_asyncio as async_motor
 from dotenv import dotenv_values
 from sanic import Request, Sanic, response
 from sanic.log import logger
+from .utils import generate_jwt
 
 from .app import app
 
@@ -24,6 +26,7 @@ is_prod: str = config.get("IS_PROD", "false")
 config.update({"IS_PROD": is_prod.lower() == "true"})
 
 app.config.update(config)
+
 
 @app.listener("before_server_start")
 async def register_db(app: Sanic):
@@ -54,6 +57,22 @@ async def register_db(app: Sanic):
     logger.info("Connected to PRODUCTION")
     app.ctx.db = client["hacknxs"]
 
+    with aiohttp.ClientSession() as session:
+        headers = {
+            "accept": "application/json",
+            "x-api-key": app.config["SANDBOX_API_KEY"],
+            "x-api-secret": app.config["SANDBOX_API_SECRET"],
+        }
+        async with session.post(
+            "https://api.sandbox.co.in/authenticate", headers=headers
+        ) as resp:
+            data = await resp.json()
+            if resp.status != 200:
+                app.ctx.token = data["access_token"]
+            else:
+                logger.error("Failed to authenticate with the Aadhaar Verification API")
+                app.stop(terminate=True)
+
 
 @app.listener("after_server_stop")
 async def close_connection(app: Sanic, loop):
@@ -64,6 +83,7 @@ async def close_connection(app: Sanic, loop):
 @app.get("/")
 async def get_root(request: Request):
     return response.text("Server Online")
+
 
 if __name__ == "__main__":
     # Check for Production environment
