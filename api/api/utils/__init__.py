@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+from typing import Literal
 
 import jwt
 from jwt import InvalidTokenError
@@ -18,10 +19,12 @@ async def check_request_for_authorization_status(request: Request) -> bool:
     return True
 
 
-async def generate_jwt(app: Sanic, data: dict, validity: int) -> str:
+async def generate_jwt(
+    app: Sanic, data: dict, validity: int, type: Literal["doctor", "patient"]
+) -> str:
     """Generates JWT with given data"""
     now = datetime.now(tz=timezone.utc)
     expire = now + timedelta(minutes=validity)
 
-    data.update({"exp": expire, "iat": now, "nbf": now})
+    data.update({"exp": expire, "iat": now, "nbf": now, "target": type})
     return jwt.encode(data, app.config["PRIV_KEY"], algorithm="RS256")
