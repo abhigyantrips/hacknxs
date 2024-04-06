@@ -17,8 +17,8 @@ export const siteConfig = {
       href: '/consultations',
     },
     {
-      title: 'About Us',
-      href: '/about',
+      title: 'Hospitals',
+      href: '/hospitals',
     },
   ] satisfies NavItem[],
   tags : [
