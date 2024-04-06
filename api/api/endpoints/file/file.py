@@ -5,7 +5,7 @@ from api.models.file_upload import FileUpload
 from sanic import Request, json, file
 from sanic.views import HTTPMethodView
 from sanic_ext import validate
-
+from datetime import datetime, timezone
 from api.utils import generate_uuid
 
 
@@ -24,7 +24,7 @@ class FileAction(HTTPMethodView):
             request.app.config["AWS_SECRET_ACCESS_KEY"],
         ) as client:
             file_s3 = await client.download_file_by_name(
-                file_name=body.file_name,
+                file_name=body.file_id,
                 bucket_name=request.app.config["Bucket_Name"],
             )
 
@@ -49,7 +49,6 @@ class FileAction(HTTPMethodView):
 
     @validate(json=FileUpload)
     async def post(self, request: Request, body: FileUpload):
-
         patients: AsyncIOMotorCollection = request.app.ctx.db["patients"]
 
         # verify if the patient exists
@@ -62,10 +61,18 @@ class FileAction(HTTPMethodView):
         file_id = await generate_uuid()
         file_name = body.file_name
 
-        # save the file in the database using $push into files dictionary in history dictionary in patient
+        # save the file in the database using $push into files dictionary in history array in patient
         await patients.update_one(
             {"aadhaar_number": body.aadhaar_number},
-            {"$push": {"history.files": {"id": file_id, "name": file_name}}},
+            {
+                "$push": {
+                    "files": {
+                        "file_id": file_id,
+                        "file_name": file_name,
+                        "created_at": datetime.now(timezone.utc),
+                    }
+                }
+            },
         )
 
         # save the file in the s3 bucket
@@ -75,7 +82,7 @@ class FileAction(HTTPMethodView):
         ) as client:
             file_s3 = await client.upload_file(
                 content_bytes=body.data,
-                file_name="test.jpg",
+                file_name=file_id,
                 bucket_id=request.app.config["Bucket_ID"],
             )
 
