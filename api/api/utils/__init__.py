@@ -5,6 +5,8 @@ import jwt
 from jwt import InvalidTokenError
 from sanic import Request, Sanic
 
+import uuid
+
 
 async def check_request_for_authorization_status(request: Request) -> bool:
     """Checks if the given request is containing a basic auth token"""
@@ -28,3 +30,7 @@ async def generate_jwt(
 
     data.update({"exp": expire, "iat": now, "nbf": now, "target": type})
     return jwt.encode(data, app.config["PRIV_KEY"], algorithm="RS256")
+
+async def generate_uuid() -> str:
+    """Generates a UUID"""
+    return str(uuid.uuid4())

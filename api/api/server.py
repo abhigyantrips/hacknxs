@@ -1,3 +1,4 @@
+import os
 import aiohttp
 import motor.motor_asyncio as async_motor
 from dotenv import dotenv_values
@@ -5,7 +6,7 @@ from sanic import Request, Sanic, response
 from sanic.log import logger
 from .utils import generate_jwt
 
-from .app import app
+from .app import appserver
 
 
 logger.debug("Loading ENV")
@@ -25,12 +26,16 @@ is_prod: str = config.get("IS_PROD", "false")
 # Convert the string to a bool and update the config with the bool.
 config.update({"IS_PROD": is_prod.lower() == "true"})
 
-app.config.update(config)
+appserver.config.update(config)
 
 import api.endpoints  # noqa: E402
 
-@app.listener("before_server_start")
+@appserver.listener("before_server_start")
 async def register_db(app: Sanic):
+    # Ensure temp directory exists
+    path = os.path.join(os.getcwd(), "temp")
+    if not os.path.exists(path):
+        os.makedirs(path)
     logger.info("Connecting to MongoDB.")
     connection = app.config.get("MONGO_CONNECTION_URI")
 
@@ -73,20 +78,20 @@ async def register_db(app: Sanic):
                     app.stop(terminate=True)
 
 
-@app.listener("after_server_stop")
+@appserver.listener("after_server_stop")
 async def close_connection(app: Sanic, loop):
     app.ctx.db_client.close()
     logger.info("Disconnected from MongoDB")
 
 
-@app.get("/")
+@appserver.get("/")
 async def get_root(request: Request):
     return response.text("Server Online")
 
 
 if __name__ == "__main__":
     # Check for Production environment
-    is_prod = app.config["IS_PROD"]
+    is_prod = appserver.config["IS_PROD"]
 
     # Use a KWARGS dict to pass to app.run dynamically
     kwargs = {"access_log": True, "host": "0.0.0.0"}
@@ -97,4 +102,4 @@ if __name__ == "__main__":
         kwargs["auto_reload"] = True
 
     # Run the API Server
-    app.run(**kwargs)
+    appserver.run(**kwargs)
