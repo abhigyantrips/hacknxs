@@ -27,6 +27,7 @@ config.update({"IS_PROD": is_prod.lower() == "true"})
 
 app.config.update(config)
 
+import api.endpoints  # noqa: E402
 
 @app.listener("before_server_start")
 async def register_db(app: Sanic):
@@ -52,26 +53,24 @@ async def register_db(app: Sanic):
 
     # Add MongoDB connection client to ctx for use in other modules.
     app.ctx.db_client = client
-
-    # Check for production environment.
-    logger.info("Connected to PRODUCTION")
     app.ctx.db = client["hacknxs"]
 
-    with aiohttp.ClientSession() as session:
-        headers = {
-            "accept": "application/json",
-            "x-api-key": app.config["SANDBOX_API_KEY"],
-            "x-api-secret": app.config["SANDBOX_API_SECRET"],
-        }
-        async with session.post(
-            "https://api.sandbox.co.in/authenticate", headers=headers
-        ) as resp:
-            data = await resp.json()
-            if resp.status != 200:
-                app.ctx.token = data["access_token"]
-            else:
-                logger.error("Failed to authenticate with the Aadhaar Verification API")
-                app.stop(terminate=True)
+    if app.config["IS_PROD"]:
+        async with aiohttp.ClientSession() as session:
+            headers = {
+                "accept": "application/json",
+                "x-api-key": app.config["SANDBOX_API_KEY"],
+                "x-api-secret": app.config["SANDBOX_API_SECRET"],
+            }
+            async with session.post(
+                "https://api.sandbox.co.in/authenticate", headers=headers
+            ) as resp:
+                data = await resp.json()
+                if resp.status != 200:
+                    app.ctx.token = data["access_token"]
+                else:
+                    logger.error("Failed to authenticate with the Aadhaar Verification API")
+                    app.stop(terminate=True)
 
 
 @app.listener("after_server_stop")
