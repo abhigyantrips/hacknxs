@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Emergency Room",
+        "location": "Trauma Center",
+        "date": "2024-04-06 10:30:00",
+        "participants": 15
+    },
+    {
+        "name": "ICU",
+        "location": "Intensive Care Unit",
+        "date": "2024-04-06 08:45:00",
+        "participants": 8
+    },
+    {
+        "name": "Surgery",
+        "location": "Operating Theater",
+        "date": "2024-04-06 13:00:00",
+        "participants": 5
+    },
+    {
+        "name": "Pediatrics",
+        "location": "Children's Ward",
+        "date": "2024-04-06 11:20:00",
+        "participants": 10
+    },
+    {
+        "name": "Maternity",
+        "location": "Labor and Delivery",
+        "date": "2024-04-06 09:00:00",
+        "participants": 3
+    },
+    {
+        "name": "Radiology",
+        "location": "Diagnostic Imaging",
+        "date": "2024-04-06 14:45:00",
+        "participants": 6
+    },
+    {
+        "name": "Laboratory",
+        "location": "Clinical Lab",
+        "date": "2024-04-06 12:15:00",
+        "participants": 12
+    },
+    {
+        "name": "Emergency Room",
+        "location": "Trauma Center",
+        "date": "2024-04-06 16:20:00",
+        "participants": 20
+    },
+    {
+        "name": "ICU",
+        "location": "Intensive Care Unit",
+        "date": "2024-04-06 17:30:00",
+        "participants": 9
+    },
+    {
+        "name": "Surgery",
+        "location": "Operating Theater",
+        "date": "2024-04-06 14:00:00",
+        "participants": 7
+    },
+    {
+        "name": "Pediatrics",
+        "location": "Children's Ward",
+        "date": "2024-04-06 10:45:00",
+        "participants": 8
+    },
+    {
+        "name": "Maternity",
+        "location": "Labor and Delivery",
+        "date": "2024-04-06 11:30:00",
+        "participants": 4
+    }
+]
