@@ -1,8 +1,9 @@
-import { MainNav } from '@/components/main-nav';
-
 import { CircleUserIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import Link from 'next/link';
+
+import { MainNav } from '@/components/main-nav';
+import { Button } from '@/components/ui/button';
 
 export default function SiteHeader() {
   return (
@@ -10,7 +11,7 @@ export default function SiteHeader() {
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav />
         <div className="flex flex-1 items-center justify-end space-x-4">
-        <Button
+          <Button
             variant="secondary"
             size="icon"
             className="rounded-full"

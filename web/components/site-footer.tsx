@@ -1,7 +1,8 @@
 import { siteConfig } from '@/site.config';
 
-import ThemeToggle from '@/components/theme-toggle';
 import Link from 'next/link';
+
+import ThemeToggle from '@/components/theme-toggle';
 
 export default function SiteFooter() {
   return (

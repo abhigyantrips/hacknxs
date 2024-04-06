@@ -15,7 +15,7 @@ export function MainNav() {
 
   return (
     <div className="flex gap-8">
-      <Link href="/" className="inline-flex items-center font-bold text-xl">
+      <Link href="/" className="inline-flex items-center text-xl font-bold">
         {siteConfig.name}
       </Link>
       <nav className="hidden items-center space-x-6 text-sm font-medium lg:flex">
