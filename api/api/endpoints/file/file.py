@@ -1,55 +1,36 @@
-import io
 import os
 import aiofiles
+from api.models.file_download import FileDownload
+from api.models.file_upload import FileUpload
 from sanic import Request, json, file
 from sanic.views import HTTPMethodView
 from sanic_ext import validate
 
 from api.utils import generate_uuid
 
-from dotenv import dotenv_values
-
-import asyncio
 
 from aiob2 import Client
-
-from pydantic import BaseModel
 
 from motor.motor_asyncio import AsyncIOMotorCollection
 
 
-class FileDownload(BaseModel):
-    file_name: str
-
-
-class FileUpload(BaseModel):
-    data: bytes
-    aadhaar_number: str
-    file_name: str
-
-
 class FileAction(HTTPMethodView):
-
     "Class to handle file operations"
-
-    config = dotenv_values(".env")
-
-    key_id = config.get("AWS_ACCESS_KEY_ID")
-    secret_key = config.get("AWS_SECRET_ACCESS_KEY")
-    bucket_id = config.get("Bucket_ID")
-    bucket_name = config.get("Bucket_Name")
 
     @validate(json=FileDownload)
     async def get(self, request: Request, body: FileDownload):
-        async with Client(self.key_id, self.secret_key) as client:
+        async with Client(
+            request.app.config["AWS_ACCESS_KEY_ID"],
+            request.app.config["AWS_SECRET_ACCESS_KEY"],
+        ) as client:
             file_s3 = await client.download_file_by_name(
                 file_name=body.file_name,
-                bucket_name=self.bucket_name,
+                bucket_name=request.app.config["Bucket_Name"],
             )
 
             # Check if the file exists
             if file_s3 is None:
-                return json({"message": "File not found."},status=404)
+                return json({"message": "File not found."}, status=404)
 
             # Save the file in the temp directory using aiofiles
             path = os.path.join(os.getcwd(), "temp")
@@ -86,15 +67,16 @@ class FileAction(HTTPMethodView):
             {"aadhaar_number": body.aadhaar_number},
             {"$push": {"history.files": {"id": file_id, "name": file_name}}},
         )
-        
+
         # save the file in the s3 bucket
-        async with Client(self.key_id, self.secret_key) as client:
+        async with Client(
+            request.app.config["AWS_ACCESS_KEY_ID"],
+            request.app.config["AWS_SECRET_ACCESS_KEY"],
+        ) as client:
             file_s3 = await client.upload_file(
                 content_bytes=body.data,
                 file_name="test.jpg",
-                bucket_id=self.bucket_id,
+                bucket_id=request.app.config["Bucket_ID"],
             )
-        
+
         return json({"message": "File uploaded successfully."}, status=200)
-
-
