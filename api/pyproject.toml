@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = "API for the HackNXS project."
+authors = ["Abhigyan Tripathi <abhigyantrips@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sanic = { extras = ["ext"], version = "^23.6.0" }
+taskipy = "^1.12.0"
+pydantic = "^2.4.2"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+black = "^23.9.1"
+pre-commit = "^3.4.0"
+python-dotenv = "^1.0.0"
+
+[tool.taskipy.tasks]
+server = { cmd = "python -m api.server", help = "Runs the API Server" }
+format = { cmd = "black .", help = "Runs the black python formatter" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
