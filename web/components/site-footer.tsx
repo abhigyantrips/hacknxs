@@ -17,7 +17,6 @@ export default function SiteFooter() {
             {siteConfig.organization}
           </Link>
         </h2>
-        <ThemeToggle />
       </div>
     </footer>
   );
