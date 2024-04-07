@@ -49,7 +49,7 @@ export default function Profile() {
   const router = useRouter();
 
   return (
-    <div className="space-y-6 py-10">
+    <div className="mx-10 space-y-6 py-10">
       <div className="flex flex-row justify-between space-y-0.5 border-b pb-6">
         <div>
           <h2 className="text-2xl tracking-tight">
