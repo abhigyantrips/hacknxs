@@ -7,8 +7,7 @@ from sanic_ext import validate
 
 
 class PermissionsRevokeView(HTTPMethodView):
-
-    @authorized
+    # @authorized
     @validate(json=PermissionUpdateData)
     async def post(self, request: Request, body: PermissionUpdateData) -> json:
         jwt_data = jwt.decode(
@@ -30,7 +29,8 @@ class PermissionsRevokeView(HTTPMethodView):
 
             if body.value:
                 await request.app.ctx.db["patients"].update_one(
-                    {"aadhaar_number": user_id}, {"$pull": {"doctors_authorised": body.id}}
+                    {"aadhaar_number": user_id},
+                    {"$pull": {"doctors_authorised": body.id}},
                 )
                 return json({"message": "Doctor unauthorised"})
 
@@ -42,6 +42,7 @@ class PermissionsRevokeView(HTTPMethodView):
 
             if body.value:
                 await request.app.ctx.db["patients"].update_one(
-                    {"aadhaar_number": user_id}, {"$pull": {"hospitals_authorised": body.id}}
+                    {"aadhaar_number": user_id},
+                    {"$pull": {"hospitals_authorised": body.id}},
                 )
                 return json({"message": "Hospital unauthorised"})

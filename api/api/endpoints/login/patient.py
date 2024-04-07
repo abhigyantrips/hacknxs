@@ -64,5 +64,7 @@ class PatientLogin(HTTPMethodView):
             ) as resp:
                 data = await resp.json()
                 if data.status == 200:
-                    token = generate_jwt(request.app, self.mapping[body.ref_id], validity=3600)
+                    token = generate_jwt(
+                        request.app, self.mapping[body.ref_id], validity=3600
+                    )
                     return json({"token": token})

@@ -26,16 +26,18 @@ class HospitalRating(HTTPMethodView):
             average = total / len(doctor["ratings"])
         return json({"rating": round(average, 2)})
 
-    # @authorized
+    # # @authorized
     @validate(json=Rating)
-    async def post(self, request: Request, hospital_id: str, body:Rating):
+    async def post(self, request: Request, hospital_id: str, body: Rating):
         """Rate a doctor."""
         collection = request.app.ctx.db["hospitals"]
         doctor = await collection.find_one({"hospital_id": hospital_id}, {"ratings": 1})
         if doctor is None:
             return json({"error": "Hospital not found."}, 404)
 
-        jwt_data = jwt.decode(request.token, key=request.app.config["PUB_KEY"], algorithms=["RS256"])
+        jwt_data = jwt.decode(
+            request.token, key=request.app.config["PUB_KEY"], algorithms=["RS256"]
+        )
 
         # Check if the user has already rated the doctor.
         for rating in doctor["ratings"]:
@@ -43,13 +45,13 @@ class HospitalRating(HTTPMethodView):
                 # Update the rating.
                 await collection.update_one(
                     {"hospital_id": hospital_id, "ratings.id": jwt_data["user_id"]},
-                    {"$set": {"ratings.$.rating": body.rating}}
+                    {"$set": {"ratings.$.rating": body.rating}},
                 )
                 return json({"message": "Rating updated."})
-            
+
         # Add the rating.
         await collection.update_one(
             {"hospital_id": hospital_id},
-            {"$push": {"ratings": {"id": jwt_data["user_id"], "rating": body.rating}}}
+            {"$push": {"ratings": {"id": jwt_data["user_id"], "rating": body.rating}}},
         )
         return json({"message": "Rating added."})
