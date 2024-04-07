@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:app/src/documents/views/documents_view.dart';
-import 'package:app/src/hospitals/views/hospital_view.dart';
+import 'package:app/src/hospitals/views/hospitals_view.dart';
+import 'package:app/src/navigation/components/keep_alive_page.dart';
 import 'package:app/src/permissions/views/permissions_view.dart';
 
 class NavigationView extends StatefulWidget {
@@ -15,12 +16,18 @@ class NavigationView extends StatefulWidget {
 
 class _NavigationViewState extends State<NavigationView> {
   final List<Widget> _views = <Widget>[
-    EventsView(),
-    PermissionsView(),
-    HospitalView()
+    KeepAlivePage(
+      child: EventsView(),
+    ),
+    KeepAlivePage(
+      child: HospitalsView(),
+    ),
+    KeepAlivePage(
+      child: PermissionsView(),
+    ),
   ];
-  PageController _pageController = PageController(initialPage: 0);
-  int _selectedIndex = 0;
+  PageController _pageController = PageController(initialPage: 1);
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +90,14 @@ class _NavigationViewState extends State<NavigationView> {
             selectedIcon: Icon(Icons.description),
           ),
           NavigationDestination(
-            icon: Icon(Icons.key_outlined),
-            label: 'Permissions',
-            selectedIcon: Icon(Icons.key),
-          ),
-          NavigationDestination(
             icon: Icon(Icons.local_hospital_outlined),
             label: 'Hospitals',
             selectedIcon: Icon(Icons.local_hospital),
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.key_outlined),
+            label: 'Permissions',
+            selectedIcon: Icon(Icons.key),
           ),
         ],
         elevation: 0.0,
