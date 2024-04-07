@@ -22,7 +22,9 @@ HospitalModel _$HospitalModelFromJson(Map<String, dynamic> json) {
 mixin _$HospitalModel {
   String get hospitalName => throw _privateConstructorUsedError;
   String get hospitalId => throw _privateConstructorUsedError;
-  List<DoctorModel> get doctors => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  double get rating => throw _privateConstructorUsedError;
+  List<String> get doctors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +39,11 @@ abstract class $HospitalModelCopyWith<$Res> {
       _$HospitalModelCopyWithImpl<$Res, HospitalModel>;
   @useResult
   $Res call(
-      {String hospitalName, String hospitalId, List<DoctorModel> doctors});
+      {String hospitalName,
+      String hospitalId,
+      String address,
+      double rating,
+      List<String> doctors});
 }
 
 /// @nodoc
@@ -55,6 +61,8 @@ class _$HospitalModelCopyWithImpl<$Res, $Val extends HospitalModel>
   $Res call({
     Object? hospitalName = null,
     Object? hospitalId = null,
+    Object? address = null,
+    Object? rating = null,
     Object? doctors = null,
   }) {
     return _then(_value.copyWith(
@@ -66,10 +74,18 @@ class _$HospitalModelCopyWithImpl<$Res, $Val extends HospitalModel>
           ? _value.hospitalId
           : hospitalId // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
       doctors: null == doctors
           ? _value.doctors
           : doctors // ignore: cast_nullable_to_non_nullable
-              as List<DoctorModel>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -83,7 +99,11 @@ abstract class _$$HospitalModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String hospitalName, String hospitalId, List<DoctorModel> doctors});
+      {String hospitalName,
+      String hospitalId,
+      String address,
+      double rating,
+      List<String> doctors});
 }
 
 /// @nodoc
@@ -99,6 +119,8 @@ class __$$HospitalModelImplCopyWithImpl<$Res>
   $Res call({
     Object? hospitalName = null,
     Object? hospitalId = null,
+    Object? address = null,
+    Object? rating = null,
     Object? doctors = null,
   }) {
     return _then(_$HospitalModelImpl(
@@ -110,10 +132,18 @@ class __$$HospitalModelImplCopyWithImpl<$Res>
           ? _value.hospitalId
           : hospitalId // ignore: cast_nullable_to_non_nullable
               as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
       doctors: null == doctors
           ? _value._doctors
           : doctors // ignore: cast_nullable_to_non_nullable
-              as List<DoctorModel>,
+              as List<String>,
     ));
   }
 }
@@ -127,7 +157,9 @@ class _$HospitalModelImpl
   const _$HospitalModelImpl(
       {required this.hospitalName,
       required this.hospitalId,
-      required final List<DoctorModel> doctors = const []})
+      required this.address,
+      required this.rating,
+      required final List<String> doctors})
       : _doctors = doctors;
 
   factory _$HospitalModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -137,10 +169,13 @@ class _$HospitalModelImpl
   final String hospitalName;
   @override
   final String hospitalId;
-  final List<DoctorModel> _doctors;
   @override
-  @JsonKey()
-  List<DoctorModel> get doctors {
+  final String address;
+  @override
+  final double rating;
+  final List<String> _doctors;
+  @override
+  List<String> get doctors {
     if (_doctors is EqualUnmodifiableListView) return _doctors;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_doctors);
@@ -148,7 +183,7 @@ class _$HospitalModelImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HospitalModel(hospitalName: $hospitalName, hospitalId: $hospitalId, doctors: $doctors)';
+    return 'HospitalModel(hospitalName: $hospitalName, hospitalId: $hospitalId, address: $address, rating: $rating, doctors: $doctors)';
   }
 
   @override
@@ -158,6 +193,8 @@ class _$HospitalModelImpl
       ..add(DiagnosticsProperty('type', 'HospitalModel'))
       ..add(DiagnosticsProperty('hospitalName', hospitalName))
       ..add(DiagnosticsProperty('hospitalId', hospitalId))
+      ..add(DiagnosticsProperty('address', address))
+      ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty('doctors', doctors));
   }
 
@@ -170,13 +207,15 @@ class _$HospitalModelImpl
                 other.hospitalName == hospitalName) &&
             (identical(other.hospitalId, hospitalId) ||
                 other.hospitalId == hospitalId) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
             const DeepCollectionEquality().equals(other._doctors, _doctors));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, hospitalName, hospitalId,
-      const DeepCollectionEquality().hash(_doctors));
+      address, rating, const DeepCollectionEquality().hash(_doctors));
 
   @JsonKey(ignore: true)
   @override
@@ -196,7 +235,9 @@ abstract class _HospitalModel implements HospitalModel {
   const factory _HospitalModel(
       {required final String hospitalName,
       required final String hospitalId,
-      required final List<DoctorModel> doctors}) = _$HospitalModelImpl;
+      required final String address,
+      required final double rating,
+      required final List<String> doctors}) = _$HospitalModelImpl;
 
   factory _HospitalModel.fromJson(Map<String, dynamic> json) =
       _$HospitalModelImpl.fromJson;
@@ -206,7 +247,11 @@ abstract class _HospitalModel implements HospitalModel {
   @override
   String get hospitalId;
   @override
-  List<DoctorModel> get doctors;
+  String get address;
+  @override
+  double get rating;
+  @override
+  List<String> get doctors;
   @override
   @JsonKey(ignore: true)
   _$$HospitalModelImplCopyWith<_$HospitalModelImpl> get copyWith =>

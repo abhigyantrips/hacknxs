@@ -21,7 +21,7 @@ InsuranceModel _$InsuranceModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$InsuranceModel {
   String get provider => throw _privateConstructorUsedError;
-  List<HospitalModel> get hospitals => throw _privateConstructorUsedError;
+  List<String> get hospitals => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $InsuranceModelCopyWith<$Res> {
           InsuranceModel value, $Res Function(InsuranceModel) then) =
       _$InsuranceModelCopyWithImpl<$Res, InsuranceModel>;
   @useResult
-  $Res call({String provider, List<HospitalModel> hospitals});
+  $Res call({String provider, List<String> hospitals});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$InsuranceModelCopyWithImpl<$Res, $Val extends InsuranceModel>
       hospitals: null == hospitals
           ? _value.hospitals
           : hospitals // ignore: cast_nullable_to_non_nullable
-              as List<HospitalModel>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$InsuranceModelImplCopyWith<$Res>
       __$$InsuranceModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String provider, List<HospitalModel> hospitals});
+  $Res call({String provider, List<String> hospitals});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class __$$InsuranceModelImplCopyWithImpl<$Res>
       hospitals: null == hospitals
           ? _value._hospitals
           : hospitals // ignore: cast_nullable_to_non_nullable
-              as List<HospitalModel>,
+              as List<String>,
     ));
   }
 }
@@ -111,8 +111,7 @@ class _$InsuranceModelImpl
     with DiagnosticableTreeMixin
     implements _InsuranceModel {
   const _$InsuranceModelImpl(
-      {required this.provider,
-      required final List<HospitalModel> hospitals = const []})
+      {required this.provider, final List<String> hospitals = const []})
       : _hospitals = hospitals;
 
   factory _$InsuranceModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -120,10 +119,10 @@ class _$InsuranceModelImpl
 
   @override
   final String provider;
-  final List<HospitalModel> _hospitals;
+  final List<String> _hospitals;
   @override
   @JsonKey()
-  List<HospitalModel> get hospitals {
+  List<String> get hospitals {
     if (_hospitals is EqualUnmodifiableListView) return _hospitals;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_hospitals);
@@ -177,7 +176,7 @@ class _$InsuranceModelImpl
 abstract class _InsuranceModel implements InsuranceModel {
   const factory _InsuranceModel(
       {required final String provider,
-      required final List<HospitalModel> hospitals}) = _$InsuranceModelImpl;
+      final List<String> hospitals}) = _$InsuranceModelImpl;
 
   factory _InsuranceModel.fromJson(Map<String, dynamic> json) =
       _$InsuranceModelImpl.fromJson;
@@ -185,7 +184,7 @@ abstract class _InsuranceModel implements InsuranceModel {
   @override
   String get provider;
   @override
-  List<HospitalModel> get hospitals;
+  List<String> get hospitals;
   @override
   @JsonKey(ignore: true)
   _$$InsuranceModelImplCopyWith<_$InsuranceModelImpl> get copyWith =>

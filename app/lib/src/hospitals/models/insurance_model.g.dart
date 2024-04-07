@@ -10,7 +10,7 @@ _$InsuranceModelImpl _$$InsuranceModelImplFromJson(Map<String, dynamic> json) =>
     _$InsuranceModelImpl(
       provider: json['provider'] as String,
       hospitals: (json['hospitals'] as List<dynamic>?)
-              ?.map((e) => HospitalModel.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => e as String)
               .toList() ??
           const [],
     );

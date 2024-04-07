@@ -2,7 +2,6 @@
 
 import 'package:flutter/foundation.dart';
 
-import 'package:app/src/permissions/models/doctor_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'hospital_model.freezed.dart';
@@ -14,7 +13,9 @@ class HospitalModel with _$HospitalModel {
   const factory HospitalModel({
     required String hospitalName,
     required String hospitalId,
-    @Default([]) required List<DoctorModel> doctors,
+    required String address,
+    required double rating,
+    required List<String> doctors,
   }) = _HospitalModel;
 
   factory HospitalModel.fromJson(Map<String, Object?> json) =>
