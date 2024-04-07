@@ -58,6 +58,7 @@ export default function HomePage() {
           <Button variant="secondary">Learn More</Button>
         </div>
       </div>
+
       <div className="mx-auto my-0 flex w-full max-w-7xl overflow-hidden px-6">
         <div className="grid gap-x-4 gap-y-4 lg:grid-cols-2">
           {/* Column-1 */}
@@ -65,7 +66,7 @@ export default function HomePage() {
             <h3 className="feature-font text-enter mb-4 text-xl font-semibold text-gray-600 md:text-start">
               FEATURES
             </h3>
-            <h2 className="text-offwhite text-enter mb-6 text-3xl font-semibold leading-snug md:text-start lg:text-5xl">
+            <h2 className="text-offwhite text-enter mb-6 text-3xl font-semibold leading-snug md:text-start lg:text-4xl">
               The most trusted healthcare data platform
             </h2>
             <p className="text-bluish text-enter font-normal md:text-start lg:text-lg">
@@ -96,11 +97,33 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className='mx-auto my-0 flex w-full max-w-7xl overflow-hidden px-6 flex-col'>
+
+      <div className='flex flex-col gap-10 lg:gap-16 pt-8 pb-20 mx-0'>
+            <div className='flex flex-col gap-4 items-center lg:flex-row lg:justify-around lg:items-center'>
+              <img src="https://fastchart.com/wp-content/uploads/2020/09/Fast-Chart_Secure-Healthcare-Data-1024x536.jpeg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
+              <img src="https://fastchart.com/wp-content/uploads/2020/09/Fast-Chart_Secure-Healthcare-Data-1024x536.jpeg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
+              <div className='feature-font text-enter mb-4 text-xl lg:text-4xl font-semibold text-gray-600'>Choose who can access what.<br/>
+                <span className='font-normal text-xs lg:text-lg'>Have complete control over who can access your data, <br/> and when they can access it, at the convenience of a click.<br/>
+                  Your data will truly remain your own.
+                </span>
+              </div>
+            </div>
+            <div className='flex flex-col items-center gap-4 lg:flex-row-reverse lg:justify-around lg:items-center'>
+              <img src="https://assets-global.website-files.com/628f158babaf96b96c2b5c1a/63040d0f3bf80f63cf943235_star-rating.jpg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
+              <img src="https://assets-global.website-files.com/628f158babaf96b96c2b5c1a/63040d0f3bf80f63cf943235_star-rating.jpg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
+              <div className='feature-font text-enter mb-4 text-xl lg:text-4xl font-semibold text-gray-600'>Hospitals picked out for you. <br/>
+                <span className='font-normal text-xs lg:text-lg'>See all highest rated hospitals near you <br/>all compatible with your insurance provider.<br/>
+                  You will never need to worry about the quality of care you receive.
+                </span>
+              </div>
+            </div>
+      </div>
+
+      <div className='mx-auto my-0 flex w-full max-w-7xl overflow-hidden px-6 flex-col pt-4'>
           <h3 className="feature-font text-enter mb-4 text-xl font-semibold text-gray-600 md:text-start">
               TESTIMONIALS
           </h3>
-          <h2 className="text-offwhite text-enter mb-6 text-3xl font-semibold leading-snug md:text-start lg:text-5xl">
+          <h2 className="text-offwhite text-enter mb-6 text-3xl font-semibold leading-snug md:text-start lg:text-4xl">
               See what our customers <br/> are saying
           </h2>
           <div className='grid gap-x-4 gap-y-1 md:grid-cols-2 lg:grid-cols-3'>
