@@ -150,7 +150,7 @@ export default function HomePage() {
                                         {items.location}
                                     </p>
                                   </div>
-                                  <p className="text-lightblue text-xs font-normal">
+                                  <p className="text-lightblue text-sm font-normal">
                                       {items.quote}
                                   </p>
                               </CardContent>
