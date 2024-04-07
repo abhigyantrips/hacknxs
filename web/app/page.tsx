@@ -44,7 +44,14 @@ const testimonialsdata = [
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col"
+    style={{
+      backgroundImage: 'url(/home_image.jpg)',
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+    }}
+    >
       <div className="flex w-full flex-col items-center justify-center gap-4 pb-24 text-center min-h-[calc(100vh_-_theme(spacing.16))]">
         <h1 className="text-5xl font-bold">
           Seamless Healthcare Access, Tailored to You.
@@ -100,8 +107,8 @@ export default function HomePage() {
 
       <div className='flex flex-col gap-10 lg:gap-16 pt-8 pb-20 mx-0'>
             <div className='flex flex-col gap-4 items-center lg:flex-row lg:justify-around lg:items-center'>
-              <img src="https://fastchart.com/wp-content/uploads/2020/09/Fast-Chart_Secure-Healthcare-Data-1024x536.jpeg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
-              <img src="https://fastchart.com/wp-content/uploads/2020/09/Fast-Chart_Secure-Healthcare-Data-1024x536.jpeg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
+              <img src="https://www.shutterstock.com/image-vector/one-line-drawing-laptop-computer-600nw-2049860036.jpg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
+              <img src="https://www.shutterstock.com/image-vector/one-line-drawing-laptop-computer-600nw-2049860036.jpg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
               <div className='feature-font text-enter mb-4 text-xl lg:text-4xl font-semibold text-gray-600'>Choose who can access what.<br/>
                 <span className='font-normal text-xs lg:text-lg'>Have complete control over who can access your data, <br/> and when they can access it, at the convenience of a click.<br/>
                   Your data will truly remain your own.
@@ -109,8 +116,8 @@ export default function HomePage() {
               </div>
             </div>
             <div className='flex flex-col items-center gap-4 lg:flex-row-reverse lg:justify-around lg:items-center'>
-              <img src="https://assets-global.website-files.com/628f158babaf96b96c2b5c1a/63040d0f3bf80f63cf943235_star-rating.jpg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
-              <img src="https://assets-global.website-files.com/628f158babaf96b96c2b5c1a/63040d0f3bf80f63cf943235_star-rating.jpg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
+              <img src="https://www.shutterstock.com/image-vector/hand-drawing-five-stars-rating-260nw-2268357417.jpg" alt="data-owner" className="w-100 h-72 object-cover hidden lg:block rounded-lg"/>
+              <img src="https://www.shutterstock.com/image-vector/hand-drawing-five-stars-rating-260nw-2268357417.jpg" alt="data-owner" className="w-72 h-40 object-cover block lg:hidden rounded-lg"/>
               <div className='feature-font text-enter mb-4 text-xl lg:text-4xl font-semibold text-gray-600'>Hospitals picked out for you. <br/>
                 <span className='font-normal text-xs lg:text-lg'>See all highest rated hospitals near you <br/>all compatible with your insurance provider.<br/>
                   You will never need to worry about the quality of care you receive.

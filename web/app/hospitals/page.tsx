@@ -78,12 +78,12 @@ export default function HospitalsPage() {
                                     <div className='flex px-1'>
                                     {
                                         Array.from({ length: Math.floor(hospital.rating) }, (_, i) => (
-                                            <StarIcon key={i} className={'text-yellow-600 dark:text-yellow-500 w-5 h-5'} />
+                                            <StarIcon key={i} className={'text-green-500 dark:text-green-500 fill-green-500 w-5 h-5'} />
                                         ))
                                     }
                                     {
                                         Array.from({ length: (hospital.rating - Math.floor(hospital.rating) )/0.5 }, (_, i) => (
-                                            <StarHalfIcon key={i} className={'text-yellow-600 dark:text-yellow-500 w-5 h-5'} />
+                                            <StarHalfIcon key={i} className={'text-green-500 dark:text-green-500 fill-green-500 w-5 h-5'} />
                                         ))
                                     }
                                 </div>
