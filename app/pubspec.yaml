@@ -42,6 +42,8 @@ dependencies:
   flutter_native_splash: ^2.4.0
   flutter_launcher_icons: ^0.13.1
   flutter_multi_formatter: ^2.12.4
+  http: ^1.2.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +61,7 @@ dev_dependencies:
   freezed_lint: ^0.0.1
   custom_lint: ^0.6.4
   riverpod_lint: ^2.3.10
+  riverpod_generator: ^2.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -78,6 +81,7 @@ flutter:
     - assets/splash-logo.png
     - assets/splash-branding.png
     - assets/aadhaar-logo.png
+    - assets/hospital.jpg
     - lib/src/documents/data/
     - lib/src/hospitals/data/
     - lib/src/permissions/data/
